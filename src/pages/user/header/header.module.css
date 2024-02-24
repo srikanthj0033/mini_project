@@ -1,0 +1,7 @@
+.name{
+ color: white;
+ background: blue;
+ display: flex;
+ align-items: center;
+ padding-top: 2px;
+}

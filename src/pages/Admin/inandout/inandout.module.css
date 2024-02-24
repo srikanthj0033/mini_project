@@ -1,0 +1,14 @@
+
+.save{
+    background: #2234f6;
+}
+
+Table{
+    background: white;
+    margin-top: 30px;
+    color: rgb(255, 255, 255);
+}
+Table Table.Thead{
+    background: #f2f2f2;
+}
+

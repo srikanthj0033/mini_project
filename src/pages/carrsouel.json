@@ -1,0 +1,24 @@
+{
+    "slides": [
+        {
+            "src": "https://rymec.edu.in/wp-content/uploads/2023/03/baim1.png",
+            "alt": "Img 1"
+        },
+        {
+            "src": "https://rymec.edu.in/wp-content/uploads/2023/03/baim2.png",
+            "alt": "Img 2"
+        },
+        {
+            "src": "https://rymec.edu.in/wp-content/uploads/2023/06/img2.png",
+            "alt": "Img 3"
+        },
+        {
+            "src": "https://rymec.edu.in/wp-content/uploads/2023/03/banim3.png",
+            "alt": "Img 4"
+        },
+        {
+            "src": "https://rymec.edu.in/wp-content/uploads/2023/03/baim4.png",
+            "alt": "Img 4"
+        }
+    ]
+}

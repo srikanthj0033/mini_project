@@ -42,13 +42,12 @@ export function About() {
       <Container fluid  mx={200} py={20}>
       <Card bg="#676F9D" w="100%" h="100%"  ta="center" radius={10} c="white" >
 
-            <Title order={2}>About Placement</Title>
+            <Title order={2}>About Society</Title>
             <Divider/>
-            <Title c="teal.4" my={10} order={4}>"GOD HAS PROVIDED A JOB FOR EVERY ONE & OUR JOB IS TO GET YOU ON"</Title>
+            <Title c="teal.4" my={10} order={4}>"Welcome to the Academic Resource Hub at RYMEC College"</Title>
             <Text mx={100} my={10} fz="xl">
-            The Training and Placement Cell imparts training to students by giving emphasis on General Aptitude, Motivational Skills, Communication Skills, Interpersonal Relationships, Leadership Qualities, Group Discussions & Interview Techniques. Resource persons and professionals from reputed organizations along with college faculties train the students. The Training and Placement Cell also helps the weak students to improve their academic performance by counseling. The Training and Placement Cell provides the infra-structural facilities to conduct group discussions, tests & interviews besides catering to other logistics. The database of the students is managed by the cell, which plays a critical role in getting jobs to the students.
-            </Text>
-            <Title ta="left" mx={100} order={4} c="teal.4" my={20}>The primary role of the Training and Placement cell is to:</Title>
+            Dive into the world of academia with the Academic Resource Hub! We're your one-stop destination for all study materials, including assignments, observations, and records. Join us to make your academic journey at RYMEC College more seamless and resourceful.            </Text>
+            <Title ta="left" mx={100} order={4} c="teal.4" my={20}>Our Academic Mission:</Title>
             <List
                 spacing="xs"
                 size="sm"
@@ -61,13 +60,13 @@ export function About() {
         </ThemeIcon>
       }
     >
-      <List.Item>Prepare students for successful performance in competitive exams like GATE,GRE,TOEFL,CAT,GMAT, AMCAT,COCUBES etc</List.Item>
-      <List.Item> Develop communication abilities by conducting GD’s and mock interviews.</List.Item>
-      <List.Item>Invite Industry and prospective employers to organize campus interviews.</List.Item>
-      <List.Item>Provide fruitful industry-institute interaction.</List.Item>
+      <List.Item>The Academic Resource Hub is on a mission to provide students with easy access to essential study materials. </List.Item>
+      <List.Item> From assignments to observations and records, we aim to support your academic success and make learning a more enjoyable experience..</List.Item>
+      {/* <List.Item>Invite Industry and prospective employers to organize campus interviews.</List.Item>
+      <List.Item>Provide fruitful industry-institute interaction.</List.Item> */}
    
     </List>
-    <Title order={4} my={30} c="teal.4">OBJECTIVES</Title>
+    {/* <Title order={4} my={30} c="teal.4">OBJECTIVES</Title>
     <List type="ordered" ta="left" ml="100"fz="lg">
       <List.Item>To impart training in skill development, personal grooming and total personality development of students.</List.Item>
       <List.Item>To organize campus recruitments for maximum placements of students.</List.Item>
@@ -81,7 +80,7 @@ export function About() {
       <Title order={4} c="teal.4">TRAINING & PLACEMENT TEAM</Title>
       <Text>Placement Director:Gururaj K K</Text>
       <Text>Asst.Placement Officer: Shivananda K B</Text>
-      </Box>
+      </Box> */}
       </Card>
     </Container>
          

@@ -5,7 +5,7 @@ import { Header } from '../dashboard/header/header';
 import classes from './products.module.css'
 import { Nav } from '../../../components/nav/nav';
 import { Breadcrumbs, Anchor, Table } from '@mantine/core';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 const elements = [
@@ -27,6 +27,8 @@ export function Products() {
   const [product_name, setProduct_name] = useState(''); 
   const [product_price, setProduct_price] = useState('');
   const [specification, setSpecification] = useState('');
+
+  const [productData, setproductData] = useState([]);//table data variable
 
 
   const [showSuccess, setShowSuccess] = useState(false);
@@ -52,7 +54,7 @@ export function Products() {
       });
   
       if (response.ok) {
-        setRedirectUrl('/plan');
+        setRedirectUrl('/products');
         setShowSuccess(true);
         console.log('Plan added successfully');
       } else {
@@ -77,15 +79,38 @@ export function Products() {
     }
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/api/product/');
+        const data = await response.json();
+        setproductData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
-//end
-  const rows = elements.map((element) => (
-    <Table.Tr style={{ backgroundColor: '#f2f2f2', color: 'black' }} key={element.product}>
-        <Table.Td>{element.product}</Table.Td>
-      <Table.Td>{element.price}</Table.Td>
+    fetchData();
+  }, []); 
+ 
+  const rows = productData.map((element) => (
+    <Table.Tr style={{ backgroundColor: '#f2f2f2', color: 'black' }} key={element.product_id}>
+      <Table.Td>{element.product_name}</Table.Td>
       <Table.Td>{element.specification}</Table.Td>
+
+      <Table.Td>{element.product_price}</Table.Td>
+      
     </Table.Tr>
   ));
+
+//end
+  // const rows = elements.map((element) => (
+  //   <Table.Tr style={{ backgroundColor: '#f2f2f2', color: 'black' }} key={element.product}>
+  //       <Table.Td>{element.product}</Table.Td>
+  //     <Table.Td>{element.price}</Table.Td>
+  //     <Table.Td>{element.specification}</Table.Td>
+  //   </Table.Tr>
+  // ));
   return (
     <AppShell
       header={{ height: 60 }}
@@ -167,8 +192,9 @@ export function Products() {
       <Table.Thead style={{ color: 'Black', background:'white' }}>
         <Table.Tr>
         <Table.Th>Product Name</Table.Th>
+        <Table.Th>Specification</Table.Th>
+
           <Table.Th>Price</Table.Th>
-          <Table.Th>Specification</Table.Th>
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody>{rows}</Table.Tbody>

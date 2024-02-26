@@ -10,12 +10,13 @@ import {
   IconReceipt2,
   IconSwitchHorizontal,
   IconLogout,
+  IconTruckDelivery
 } from '@tabler/icons-react';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import classes from './nav.module.css';
 
 const data = [
-  { link: '/userDash', label: 'Items', icon: IconBellRinging },
+  { link: '/userDash', label: 'Order', icon: IconTruckDelivery },
 
 ];
 
@@ -30,7 +31,7 @@ export function UserNav() {
       key={item.label}
       onClick={() => setActive(item.label)}
     >
-      <item.icon className={classes.linkIcon} stroke={1.5} />
+      <item.icon className={classes.linkIcon} stroke={1.5}  />
       <span>{item.label}</span>
     </Link>
   ));

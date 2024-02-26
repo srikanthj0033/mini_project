@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Grid, Tabs, TextInput, PasswordInput, Anchor, Checkbox, Button, Group, Avatar, Divider, Fieldset, Text
+  Grid, Tabs, TextInput, PasswordInput, Anchor, Checkbox, Button, Group, Avatar, Divider, Fieldset, Text, GridCol,Image
 } from '@mantine/core';
 import { IconBrandGoogleFilled, IconBrandWindows, IconBrandFacebookFilled } from '@tabler/icons-react';
 import classes from './login.module.css';
@@ -34,7 +34,7 @@ const UserTab = () => (
       <Text ta={"right"}>forgot password?</Text>
     </Anchor>
     <Checkbox defaultChecked label="Remember me" size="xs" />
-   <Link to="/">
+   <Link to="/userDash">
     <Button fullWidth mt={"md"} color="black">Login</Button></Link>
     <Group style={{ alignContent: "center", justifyContent: "center", marginTop: "10px" ,marginRight:"20px"}}>
     <Link to="/landing">
@@ -48,8 +48,15 @@ export function Login() {
   return (
     
     <Grid className={classes.grid}>
+      <Grid.Col span={6} visibleFrom="md">
+      <Image
+      radius="md"
+      height="100%"
+      src="https://rymec.edu.in/wp-content/uploads/2023/03/baim5.png"
+    />
+      </Grid.Col>
 
-      <Grid.Col span={6} offset={6} className={classes.col} >
+      <Grid.Col span={6}  className={classes.col} >
 
         <Tabs  variant="outline" radius="lg" defaultValue="gallery" className={classes.tabs} >
           <Tabs.List className={classes.tabslist}>

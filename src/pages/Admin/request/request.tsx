@@ -3,6 +3,7 @@ import { useDisclosure } from '@mantine/hooks';
 import { Header } from '../dashboard/header/header';
 import { Nav } from '../../../components/nav/nav';
 import { Table } from '@mantine/core';
+import { useEffect, useState } from 'react';
 
 
 const elements = [
@@ -18,14 +19,32 @@ export function Request() {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
   const [opened, { toggle }] = useDisclosure();
-  const rows = elements.map((element) => (
-    <Table.Tr style={{ backgroundColor: '#f2f2f2', color: 'black' }} key={element.product}>
-        <Table.Td>{element.product}</Table.Td>
-      <Table.Td>{element.price}</Table.Td>
-      <Table.Td>{element.specification}</Table.Td>
-      <Table.Td>{element.specification}</Table.Td>
-      <Table.Td>{element.specification}</Table.Td>
-      <Table.Td>{element.specification}</Table.Td>  
+
+  const [requestData, setrRequestData]= useState([]);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/api/studentrequ/ ');
+        const data = await response.json();
+        setrRequestData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []); 
+
+  const rows = requestData.map((element) => (
+    <Table.Tr style={{ backgroundColor: '#f2f2f2', color: 'black' }} key={element.id}>
+        <Table.Td>{element.stdname}</Table.Td>
+      <Table.Td>{element.usn}</Table.Td>
+      <Table.Td>{element.branch}</Table.Td>
+      <Table.Td>{element.phone_no}</Table.Td>
+      <Table.Td>{element.quantity}</Table.Td>
+      <Table.Td>{element.product_id}</Table.Td>  
     </Table.Tr>
   ));
   return (
@@ -56,11 +75,11 @@ export function Request() {
       <Table.Thead style={{ color: 'Black', background:'white' }}>
         <Table.Tr>
         <Table.Th>Student Name</Table.Th>
-          <Table.Th>Trans Id</Table.Th>
+          <Table.Th>USN</Table.Th>
+          <Table.Th>Branch</Table.Th>
+          <Table.Th>Phone No</Table.Th>
+          <Table.Th>Qunatity</Table.Th>
           <Table.Th>Product</Table.Th>
-          <Table.Th>Quantity</Table.Th>
-          <Table.Th>Price</Table.Th>
-          <Table.Th>Status</Table.Th>
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody>{rows}</Table.Tbody>

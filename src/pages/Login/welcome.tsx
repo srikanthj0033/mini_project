@@ -6,9 +6,9 @@ import { IconBrandGoogleFilled, IconBrandWindows, IconBrandFacebookFilled } from
 import classes from './login.module.css';
 import { Link } from 'react-router-dom';
 
-const LoginTab = () => (
+const AdminTab = () => (
   <Fieldset variant="unstyled">
-    <Text size='lg' ta={"center"} >Welcome back</Text>
+    <Text size='lg' ta={"center"} >Welcome Back Admin</Text>
     <TextInput placeholder="email/phone num" />
     <PasswordInput placeholder="Password" mt={"md"} />
     <Anchor href="#" underline="hover">
@@ -25,14 +25,15 @@ const LoginTab = () => (
   </Fieldset>
 );
 
-const SignupTab = () => (
+const UserTab = () => (
     <Fieldset variant="unstyled">
-    <Text size='lg' ta={"center"} >Welcome back</Text>
+    <Text size='lg' ta={"center"} >Welcome Back User</Text>
     <TextInput placeholder="email/phone num" />
     <PasswordInput placeholder="Password" mt={"md"} />
     <Anchor href="#" underline="hover">
       <Text ta={"right"}>forgot password?</Text>
     </Anchor>
+    <Checkbox defaultChecked label="Remember me" size="xs" />
    <Link to="/">
     <Button fullWidth mt={"md"} color="black">Login</Button></Link>
     <Group style={{ alignContent: "center", justifyContent: "center", marginTop: "10px" ,marginRight:"20px"}}>
@@ -57,11 +58,11 @@ export function Login() {
           </Tabs.List>
 
           <Tabs.Panel value="gallery" className={classes.panel}>
-            <LoginTab />
+            <AdminTab />
           </Tabs.Panel>
 
           <Tabs.Panel value="messages" className={classes.panel}>
-            <SignupTab />
+            <UserTab />
           </Tabs.Panel>
         </Tabs>
       </Grid.Col>

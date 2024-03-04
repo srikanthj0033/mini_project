@@ -10,7 +10,7 @@ import { Landing } from './pages/user/Landing';
 import { UserDashboard } from './pages/user/dashboard/userdashboard';
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/dashboard',
     element: <Dashboard />,
   },
   {
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
     element: <Request />,
   },
   {
-    path: '/landing ',
+    path: '/',
     element: <Landing />,
   },
   {

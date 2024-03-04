@@ -51,7 +51,7 @@ export function UserDashboard() {
   
       console.log('Data being sent:', distData);
 
-      const response = await fetch('http://127.0.0.1:8000/api/studentrequ/ ', {
+      const response = await fetch('http://127.0.0.1:8000/api/student-request/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -112,7 +112,7 @@ export function UserDashboard() {
       size="md"
       radius="md"
       label="Student Name"
-      placeholder="Input placeholder"
+      placeholder="enter name"
       value={stdname}
       onChange={(event) => setStdName(event.target.value)}
     />

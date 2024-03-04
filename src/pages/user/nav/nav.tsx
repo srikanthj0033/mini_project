@@ -43,10 +43,10 @@ export function UserNav() {
       </div>
 
       <div className={classes.footer}>
-        <Link to="/profile" className={classes.link} onClick={(event) => event.preventDefault()}>
+        {/* <Link to="/profile" className={classes.link} onClick={(event) => event.preventDefault()}>
           <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
           <span>Profile</span>
-        </Link>
+        </Link> */}
 
         <Link to="/logout" className={classes.link} onClick={(event) => event.preventDefault()}>
           <IconLogout className={classes.linkIcon} stroke={1.5} />

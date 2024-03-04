@@ -17,7 +17,7 @@ import classes from './nav.module.css';
 const data = [
   { link: '/', label: 'Dashboard', icon: IconBellRinging },
   { link: '/products', label: 'Products', icon: IconReceipt2 },
-  { link: '/inandout', label: 'In and Out', icon: IconFingerprint },
+  { link: '/inandout', label: 'Stock', icon: IconFingerprint },
   { link: '/request', label: 'Requested', icon: IconReceipt2 },
 ];
 
@@ -47,10 +47,10 @@ export function Nav() {
       </div>
 
       <div className={classes.footer}>
-        <Link to="/profile" className={classes.link} onClick={(event) => event.preventDefault()}>
+        {/* <Link to="/profile" className={classes.link} onClick={(event) => event.preventDefault()}>
           <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
           <span>Profile</span>
-        </Link>
+        </Link> */}
 
         <Link to="/logout" className={classes.link} onClick={(event) => event.preventDefault()}>
           <IconLogout className={classes.linkIcon} stroke={1.5} />

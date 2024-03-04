@@ -5,6 +5,7 @@ import classes from './inandout.module.css'
 import { Nav } from '../../../components/nav/nav';
 import { Breadcrumbs, Anchor, Table } from '@mantine/core';
 import { useEffect, useState } from 'react';
+import { IconTrash } from '@tabler/icons-react';
 
 
 const elements = [
@@ -113,15 +114,39 @@ export function Circulation() {
 
     fetchData();
   }, []); 
-  const rows = inoutstockData.map((element) => (
-    <Table.Tr style={{ backgroundColor: '#f2f2f2', color: 'black' }} key={element.id}>
-        <Table.Td>{element.in_out_stock}</Table.Td>
-      <Table.Td>{element.price}</Table.Td>
-      <Table.Td>{element.quantity}</Table.Td>
-      <Table.Td>{element.product_name_id}</Table.Td>
+  // const rows = inoutstockData.map((element) => (
+  //   <Table.Tr style={{ backgroundColor: '#f2f2f2', color: 'black' }} key={element.id}>
+  //       <Table.Td>{element.in_out_stock}</Table.Td>
+  //     <Table.Td>{element.price}</Table.Td>
+  //     <Table.Td>{element.quantity}</Table.Td>
+  //     <Table.Td>{element.product_name_id}</Table.Td>
 
-    </Table.Tr>
-  ));
+  //   </Table.Tr>
+  // ));
+
+
+  const rows = inoutstockData.map((element) => {
+    // Find the branch name corresponding to the branch ID
+    const productName =
+    products.find((product) => product.product_id === element.product_name_id)?.product_name || '';
+
+    // // Find the subject name corresponding to the subject ID
+    // const subName = subjects.find((subject) => subject.sub_id === element.sub_id)?.sub_name || '';
+
+    // // Find the subject name corresponding to the subject ID
+    // const stuName = students.find((student) => student.stu_id === element.std_id)?.stu_name || '';
+
+    return (
+      <Table.Tr style={{ backgroundColor: '#f2f2f2', color: 'black' }} key={element.id}>
+        <Table.Td>{element.in_out_stock}</Table.Td>
+        <Table.Td>{element.price}</Table.Td>
+        <Table.Td>{element.quantity}</Table.Td>
+        <Table.Td>{productName}</Table.Td>
+        
+      </Table.Tr>
+    );
+  });
+
   return (
     <AppShell
       header={{ height: 60 }}
@@ -207,7 +232,7 @@ export function Circulation() {
       }}/>
       </Grid.Col>
       <Grid.Col span={4}>
-      <NativeSelect label="In and Out"  value={inOut}
+      <NativeSelect label="Stock"  value={inOut}
                 onChange={(event) => {
                 const selectedValue = event.target.value;
                 console.log('Selected Organization Type:', selectedValue);
@@ -216,7 +241,7 @@ export function Circulation() {
                 data={[
                 { label: 'Select Type', value: '' },
                 { label: 'InStock', value: 'InStock' },
-                { label: 'OutStock', value: 'OutStock' }
+                // { label: 'OutStock', value: 'OutStock' }
                 ]} styles={{
         label: {
           color: 'black',

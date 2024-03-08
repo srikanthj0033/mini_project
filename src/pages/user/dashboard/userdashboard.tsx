@@ -4,7 +4,6 @@ import { NativeSelect,Textarea,NumberInput,Button } from '@mantine/core';
 import { Header } from '../header/header';
 import { UserNav } from '../nav/nav';
 import { useEffect, useState } from 'react';
-
 export function UserDashboard() {
   const [opened, { toggle }] = useDisclosure();
 
@@ -36,6 +35,8 @@ export function UserDashboard() {
 
     fetchProducts();
   }, []);
+
+
 
   const handleRequest = async () => {
     try {

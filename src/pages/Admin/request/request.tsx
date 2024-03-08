@@ -1,10 +1,11 @@
-import { AppShell, Burger, Button, Group, Skeleton } from '@mantine/core';
+import { AppShell, Burger, Button, Grid, Group, Skeleton, TextInput } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { Header } from '../dashboard/header/header';
 import { Nav } from '../../../components/nav/nav';
 import { Table } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import { IconTrash } from '@tabler/icons-react';
+import * as XLSX from 'xlsx';
 
 export function Request() {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
@@ -13,6 +14,9 @@ export function Request() {
 
   const [requestData, setRequestData] = useState([]);
   const [products, setProducts] = useState([]); // Add state for products
+
+  const [usn, setUsn] = useState('');
+
 
   const fetchProducts = async () => {
     try {
@@ -26,7 +30,10 @@ export function Request() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/student-request/');
+
+      const apiUrl =`http://127.0.0.1:8000/api/stdusn/?usn=${usn}`;
+      
+      const response = await fetch(apiUrl);
       const data = await response.json();
       setRequestData(data);
     } catch (error) {
@@ -37,7 +44,7 @@ export function Request() {
   useEffect(() => {
     fetchData();
     fetchProducts(); // Fetch products along with student requests
-  }, []);
+  }, [usn]);
 
   const handleDeleteRequest = async (id) => {
 
@@ -61,6 +68,18 @@ export function Request() {
 
 
     // ... (your existing delete logic)
+  };
+
+
+  const exportToExcel = () => {
+    if (requestData.length > 0) {
+      const ws = XLSX.utils.json_to_sheet(requestData );
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'Products Data');
+      XLSX.writeFile(wb, 'products.xlsx');
+    } else {
+      console.warn('No data available for export.');
+    }
   };
 
   const rows = requestData.map((element) => {
@@ -111,6 +130,34 @@ export function Request() {
           ))}
       </AppShell.Navbar>
       <AppShell.Main style={{ backgroundColor: '#f2f2f2' }}>
+
+            
+
+        <TextInput
+          variant="filled"
+          size="sm"
+          radius="md"
+          label="Enter USN"
+          placeholder="Enter USN"
+          width="200"
+          mt={50}
+          value={usn}
+          onChange={(event) => setUsn(event.target.value)}
+          styles={{
+            input: {
+              backgroundColor: 'white',
+              border: 'none',
+              color: 'black',
+              height: '40px'
+            }, // Adjust the background color
+            wrapper: { marginRight: '10px', minWidth: '150px', maxWidth: '300px' },
+          }}
+        />
+      <Button variant="filled"  justify="right" mt={10} onClick={exportToExcel}>export to excel</Button>
+
+
+      
+
         <Table>
           <Table.Thead style={{ color: 'Black', background: 'white' }}>
             <Table.Tr>
@@ -125,7 +172,11 @@ export function Request() {
           </Table.Thead>
           <Table.Tbody>{rows}</Table.Tbody>
         </Table>
+
+
       </AppShell.Main>
+
+      
     </AppShell>
   );
 }

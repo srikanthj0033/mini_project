@@ -6,6 +6,7 @@ import classes from './products.module.css'
 import { Nav } from '../../../components/nav/nav';
 import { Breadcrumbs, Anchor, Table } from '@mantine/core';
 import { useEffect, useState } from 'react';
+import * as XLSX from 'xlsx';
 
 
 const elements = [
@@ -92,6 +93,17 @@ export function Products() {
 
     fetchData();
   }, []); 
+
+  const exportToExcel = () => {
+    if (productData.length > 0) {
+      const ws = XLSX.utils.json_to_sheet(productData);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'Products Data');
+      XLSX.writeFile(wb, 'products.xlsx');
+    } else {
+      console.warn('No data available for export.');
+    }
+  };
  
   const rows = productData.map((element) => (
     <Table.Tr style={{ backgroundColor: '#f2f2f2', color: 'black' }} key={element.product_id}>
@@ -188,6 +200,8 @@ export function Products() {
       </Grid.Col>
     </Grid>
     <Button variant="filled"  ml={20} mt={10} className={classes.save}  onClick={handleAddProduct}>Save</Button>
+    <Button variant="filled"  ml={20} mt={10} className={classes.save}  onClick={exportToExcel}>export to excel</Button>
+
     <Table >
       <Table.Thead style={{ color: 'Black', background:'white' }}>
         <Table.Tr>
@@ -198,6 +212,7 @@ export function Products() {
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody>{rows}</Table.Tbody>
+
     </Table>
  
 

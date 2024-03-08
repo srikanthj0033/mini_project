@@ -15,7 +15,7 @@ const AdminTab = () => (
       <Text ta={"right"}>forgot password?</Text>
     </Anchor>
     <Checkbox defaultChecked label="Remember me" size="xs" />
-   <Link to="/dashboard">
+    <Link to="/dashboard">
     <Button fullWidth mt={"md"} color="black">Login</Button></Link>
     <Group style={{ alignContent: "center", justifyContent: "center", marginTop: "10px" ,marginRight:"20px", padding:""}}>
     <Link to="/">
@@ -72,8 +72,7 @@ export function Login() {
             <UserTab />
           </Tabs.Panel>
         </Tabs>
-      </Grid.Col>
-     
+      </Grid.Col>  
     </Grid>
     
   );

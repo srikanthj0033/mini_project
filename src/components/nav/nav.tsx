@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import classes from './nav.module.css';
 
 const data = [
-  { link: '/', label: 'Dashboard', icon: IconBellRinging },
+  { link: '/dashboard', label: 'Dashboard', icon: IconBellRinging },
   { link: '/products', label: 'Products', icon: IconReceipt2 },
   { link: '/inandout', label: 'Stock', icon: IconFingerprint },
   { link: '/request', label: 'Requested', icon: IconReceipt2 },

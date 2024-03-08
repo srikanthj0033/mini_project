@@ -6,6 +6,7 @@ import { Nav } from '../../../components/nav/nav';
 import { Breadcrumbs, Anchor, Table } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import { IconTrash } from '@tabler/icons-react';
+import * as XLSX from 'xlsx';
 
 
 const elements = [
@@ -114,6 +115,18 @@ export function Circulation() {
 
     fetchData();
   }, []); 
+
+  const exportToExcel = () => {
+    if (inoutstockData.length > 0) {
+      const ws = XLSX.utils.json_to_sheet(inoutstockData);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'in and out stock');
+      XLSX.writeFile(wb, 'stock.xlsx');
+    } else {
+      console.warn('No data available for export.');
+    }
+  };
+
   // const rows = inoutstockData.map((element) => (
   //   <Table.Tr style={{ backgroundColor: '#f2f2f2', color: 'black' }} key={element.id}>
   //       <Table.Td>{element.in_out_stock}</Table.Td>
@@ -256,6 +269,8 @@ export function Circulation() {
       </Grid.Col> 
     </Grid>
     <Button variant="filled"  ml={20} mt={10} className={classes.save} onClick={handleRequest} >Save</Button>
+    <Button variant="filled"  ml={20} mt={10} className={classes.save}  onClick={exportToExcel}>export to excel</Button>
+
     <Table >
       <Table.Thead style={{ color: 'Black', background:'white' }}>
         <Table.Tr>
